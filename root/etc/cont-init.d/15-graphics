@@ -2,7 +2,7 @@
 cd /tmp
 
 # Define drivers supported by the container
-DRIVERS_SUPPORTED=("nvidia" "i810" "i815" "i830" "i845" "i855" "i865" "i915" "i945" "i965")
+DRIVERS_SUPPORTED=("nvidia" "nouveau" "i810" "i815" "i830" "i845" "i855" "i865" "i915" "i945" "i965")
 
 # Check which drivers are installed on the host OS
 declare -a DRIVERS_DETECTED=(`lshw -c video | awk '/configuration: driver/{print $2}' | cut -d '=' -f 2 | tr '\n' ' ' | xargs`)
@@ -55,6 +55,14 @@ case $GFX_DRIVER in
     ;;
     i810|i815|i830|i845|i855|i865|i915|i945|i965 )
       echo "Intel Driver detected on host OS"
+      echo "Installing driver"
+      apt-get update && \
+      apt-get -y install libgl1-mesa-glx libgl1-mesa-dri && \
+      rm -rf /var/lib/apt/lists/*
+      echo "Driver installed"
+    ;;
+    nouveau )
+      echo "nouveau driver detected on host OS"
       echo "Installing driver"
       apt-get update && \
       apt-get -y install libgl1-mesa-glx libgl1-mesa-dri && \
