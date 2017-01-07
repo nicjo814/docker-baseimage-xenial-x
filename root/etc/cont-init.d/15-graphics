@@ -2,7 +2,7 @@
 cd /tmp
 
 # Define drivers supported by the container
-DRIVERS_SUPPORTED=("nvidia" "nouveau" "i810" "i815" "i830" "i845" "i855" "i865" "i915" "i945" "i965")
+DRIVERS_SUPPORTED=("nvidia" "nouveau" "radeon" "i810" "i815" "i830" "i845" "i855" "i865" "i915" "i945" "i965")
 
 # Check which drivers are installed on the host OS
 declare -a DRIVERS_DETECTED=(`lshw -c video | awk '/configuration: driver/{print $2}' | cut -d '=' -f 2 | tr '\n' ' ' | xargs`)
@@ -53,7 +53,7 @@ case $GFX_DRIVER in
       echo "NVIDIA driver ${gfx_version} already installed"
     fi
     ;;
-    nouveau|i810|i815|i830|i845|i855|i865|i915|i945|i965 )
+    nouveau|radeon|i810|i815|i830|i845|i855|i865|i915|i945|i965 )
       echo "$GFX_DRIVER Driver detected on host OS"
       echo "Installing mesa driver"
       apt-get update && \
