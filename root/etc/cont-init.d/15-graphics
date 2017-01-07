@@ -53,17 +53,9 @@ case $GFX_DRIVER in
       echo "NVIDIA driver ${gfx_version} already installed"
     fi
     ;;
-    i810|i815|i830|i845|i855|i865|i915|i945|i965 )
-      echo "Intel Driver detected on host OS"
-      echo "Installing driver"
-      apt-get update && \
-      apt-get -y install libgl1-mesa-glx libgl1-mesa-dri && \
-      rm -rf /var/lib/apt/lists/*
-      echo "Driver installed"
-    ;;
-    nouveau )
-      echo "nouveau driver detected on host OS"
-      echo "Installing driver"
+    nouveau|i810|i815|i830|i845|i855|i865|i915|i945|i965 )
+      echo "$GFX_DRIVER Driver detected on host OS"
+      echo "Installing mesa driver"
       apt-get update && \
       apt-get -y install libgl1-mesa-glx libgl1-mesa-dri && \
       rm -rf /var/lib/apt/lists/*
