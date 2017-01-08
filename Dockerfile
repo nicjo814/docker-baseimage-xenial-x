@@ -4,7 +4,7 @@ MAINTAINER nicjo814
 # set env variables
 ENV DISPLAY=":0"
 ENV XAUTHORITY="/tmp/.docker.xauth"
-ENV APTLIST="lshw wget module-init-tools"
+ENV APTLIST="lshw wget module-init-tools libgl1-mesa-glx libgl1-mesa-dri"
 
 # install packages
 RUN apt-get update -q && \
