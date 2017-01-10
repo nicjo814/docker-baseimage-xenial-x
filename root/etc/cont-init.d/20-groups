@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv bash
+
+# Make abc user a member of the audio group
+sed -E -i 's/(audio\:x\:[0-9]+\:).*/\1abc/g' /etc/group
+
+# Make abc user a member of the video group
+sed -E -i 's/(video\:x\:[0-9]+\:).*/\1abc/g' /etc/group
+
