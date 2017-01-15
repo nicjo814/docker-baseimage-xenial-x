@@ -5,10 +5,10 @@ MAINTAINER nicjo814
 ENV DISPLAY=":0"
 ENV XAUTHORITY="/tmp/.docker.xauth" \
 	APTLIST=" \
-  	libgl1-mesa-dri \
+	libgl1-mesa-dri \
 	libgl1-mesa-glx \
 	lshw \
-  	module-init-tools \
+	module-init-tools \
 	wget"
 
 # install packages
