@@ -17,6 +17,9 @@ RUN \
   apt-get install \
     $APTLIST -qy && \
 
+# add abc user to audio/video groups
+  usermod -a -G audio,video abc && \
+
 # cleanup
   cd / && \
   apt-get autoremove -y && \
