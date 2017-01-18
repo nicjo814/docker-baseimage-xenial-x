@@ -2,14 +2,14 @@ FROM lsiobase/xenial
 MAINTAINER nicjo814
 
 # set env variables
-ENV DISPLAY=":0"
-ENV XAUTHORITY="/tmp/.docker.xauth" \
+ENV DISPLAY=":0" \
+	XAUTHORITY="/tmp/.docker.xauth" \
 	APTLIST=" \
-	libgl1-mesa-dri \
-	libgl1-mesa-glx \
-	lshw \
-	module-init-tools \
-	wget"
+		libgl1-mesa-dri \
+		libgl1-mesa-glx \
+		lshw \
+		module-init-tools \
+		wget"
 
 # install packages
 RUN \
